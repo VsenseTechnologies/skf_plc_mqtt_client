@@ -26,8 +26,8 @@ impl PostgresUnitRepository {
 impl UnitRepository for Arc<PostgresUnitRepository> {
     async fn update_temperature(
         &self,
-        unit_id: String,
-        temperature: String,
+        unit_id: &String,
+        temperature: &String,
     ) -> Result<(), DBError> {
         query!(
             "UPDATE units SET rt_temp = $1 WHERE unit_id = $2",
@@ -42,8 +42,8 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
 
     async fn update_pid_valve_opening(
         &self,
-        unit_id: String,
-        opening: String,
+        unit_id: &String,
+        opening: &String,
     ) -> Result<(), DBError> {
         query!(
             "UPDATE units SET rt_pid = $1 WHERE unit_id = $2",
@@ -58,7 +58,7 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
 
     async fn update_blower_trip_status(
         &self,
-        unit_id: String,
+        unit_id: &String,
         status: bool,
     ) -> Result<(), DBError> {
         query!(
@@ -74,7 +74,7 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
 
     async fn update_elevator_trip_status(
         &self,
-        unit_id: String,
+        unit_id: &String,
         status: bool,
     ) -> Result<(), DBError> {
         query!(
@@ -88,7 +88,11 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
         Ok(())
     }
 
-    async fn update_rotor_trip_status(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    async fn update_rotor_trip_status(
+        &self,
+        unit_id: &String,
+        status: bool,
+    ) -> Result<(), DBError> {
         query!(
             "UPDATE units SET rotor_trip_fb = $1 WHERE unit_id = $2",
             status,
@@ -100,7 +104,11 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
         Ok(())
     }
 
-    async fn update_blower_run_status(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    async fn update_blower_run_status(
+        &self,
+        unit_id: &String,
+        status: bool,
+    ) -> Result<(), DBError> {
         query!(
             "UPDATE units SET blower_run_fb = $1 WHERE unit_id = $2",
             status,
@@ -114,7 +122,7 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
 
     async fn update_elevator_run_status(
         &self,
-        unit_id: String,
+        unit_id: &String,
         status: bool,
     ) -> Result<(), DBError> {
         query!(
@@ -128,7 +136,7 @@ impl UnitRepository for Arc<PostgresUnitRepository> {
         Ok(())
     }
 
-    async fn update_rotor_run_status(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    async fn update_rotor_run_status(&self, unit_id: &String, status: bool) -> Result<(), DBError> {
         query!(
             "UPDATE units SET rotor_run_fb = $1 WHERE unit_id = $2",
             status,

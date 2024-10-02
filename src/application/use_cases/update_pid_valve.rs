@@ -13,7 +13,11 @@ impl<T: UnitRepository> UpdatePIDValveUseCase<T> {
         UpdatePIDValveUseCase { unit_service }
     }
 
-    pub async fn update_pid_valve(&self, unit_id: String, opening: String) -> Result<(), DBError> {
+    pub async fn update_pid_valve(
+        &self,
+        unit_id: &String,
+        opening: &String,
+    ) -> Result<(), DBError> {
         self.unit_service
             .update_pid_valve_opening(unit_id, opening)
             .await

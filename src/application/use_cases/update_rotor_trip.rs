@@ -13,7 +13,7 @@ impl<T: UnitRepository> UpdateRotorTripUseCase<T> {
         UpdateRotorTripUseCase { unit_service }
     }
 
-    pub async fn update_rotor_trip(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    pub async fn update_rotor_trip(&self, unit_id: &String, status: bool) -> Result<(), DBError> {
         self.unit_service
             .update_rotor_trip_status(unit_id, status)
             .await

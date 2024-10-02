@@ -15,8 +15,8 @@ impl<T: UnitRepository> UpdateTemperatureUseCase<T> {
 
     pub async fn update_temperature(
         &self,
-        unit_id: String,
-        temperature: String,
+        unit_id: &String,
+        temperature: &String,
     ) -> Result<(), DBError> {
         self.unit_service
             .update_temparature(unit_id, temperature)

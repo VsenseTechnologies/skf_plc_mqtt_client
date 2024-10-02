@@ -13,7 +13,7 @@ impl<T: UnitRepository> UpdateBlowerRunUseCase<T> {
         UpdateBlowerRunUseCase { unit_service }
     }
 
-    pub async fn update_blower_run(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    pub async fn update_blower_run(&self, unit_id: &String, status: bool) -> Result<(), DBError> {
         self.unit_service
             .update_blower_run_status(unit_id, status)
             .await

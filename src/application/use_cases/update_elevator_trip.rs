@@ -13,7 +13,11 @@ impl<T: UnitRepository> UpdateElevatorTripUseCase<T> {
         UpdateElevatorTripUseCase { unit_service }
     }
 
-    pub async fn update_elevator_trip(&self, unit_id: String, status: bool) -> Result<(), DBError> {
+    pub async fn update_elevator_trip(
+        &self,
+        unit_id: &String,
+        status: bool,
+    ) -> Result<(), DBError> {
         self.unit_service
             .update_elevator_trip_status(unit_id, status)
             .await
