@@ -1,0 +1,10 @@
+services:
+  skf_plc_mqtt_client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MQTT_CLIENT_ID=skf_server
+      - MQTT_BROKER_HOST=biometricunit.vsensetech.in
+      - MQTT_BROKER_PORT=1883
+      - DATABASE_URL=postgresql://admin:TeKC4HkVJQXNxEyWa9PgF5ql0FGo7B85@dpg-crsi643tq21c73dfh970-a.singapore-postgres.render.com/skf
